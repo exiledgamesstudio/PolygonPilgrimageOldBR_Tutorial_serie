@@ -14,11 +14,11 @@ https://www.youtube.com/watch?v=uQlDfDsWiMs&list=PLDSN4X0GGaNJuuSFS5EH9rEmiC_ZC5
 ---
 # changelog below (from bottom to top) : 
 ---
-- particle effects for part 5 added.
-https://assetstore.unity.com/packages/essentials/asset-packs/unity-particle-pack-5-x-73777
----
 - version : 0.4 (currently in repository)
 note : prefabs not made
+---
+- particle effects for part 5 added.
+https://assetstore.unity.com/packages/essentials/asset-packs/unity-particle-pack-5-x-73777
 ---
 - added resources for part 4.
 ---
