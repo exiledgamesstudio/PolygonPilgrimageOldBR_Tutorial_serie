@@ -12,12 +12,14 @@ https://www.youtube.com/watch?v=uQlDfDsWiMs&list=PLDSN4X0GGaNJuuSFS5EH9rEmiC_ZC5
 ---
 # Made with Unity 2019.4.28f1 (LTS in july 2021)
 ---
-- changelog : 
+# changelog below (from bottom to top) : 
+
+
 version : 0.4
----
-- inited at the series part 3.
----
-- added resources for part 4.
 ---
 - particle effects for part 5 added.
 https://assetstore.unity.com/packages/essentials/asset-packs/unity-particle-pack-5-x-73777
+---
+- added resources for part 4.
+---
+- inited at the series part 3.
