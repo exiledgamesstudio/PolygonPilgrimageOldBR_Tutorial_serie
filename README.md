@@ -12,8 +12,8 @@ https://www.youtube.com/watch?v=uQlDfDsWiMs&list=PLDSN4X0GGaNJuuSFS5EH9rEmiC_ZC5
 ---
 # Made with Unity 2019.4.28f1 (LTS in july 2021)
 ---
-version : 0.4
 - changelog : 
+version : 0.4
 ---
 - inited at the series part 3.
 ---
