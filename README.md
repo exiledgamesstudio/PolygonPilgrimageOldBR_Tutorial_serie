@@ -6,6 +6,8 @@ a few things change, added another alt compass texture so far and applied fixs n
 - will commit all youtube series, no branching of specific parts here, a final touch
 will be done once the final video is reached.
 
+# Made with Unity 2019.4.28f1 (LTS in july 2021)
+
 https://www.youtube.com/watch?v=uQlDfDsWiMs&list=PLDSN4X0GGaNJuuSFS5EH9rEmiC_ZC5Utc
 
 - changelog : 
