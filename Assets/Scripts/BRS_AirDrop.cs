@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BRS_AirDrop : MonoBehaviour
 {
@@ -15,7 +13,7 @@ public class BRS_AirDrop : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		AirDropRB = transform.GetComponent<Rigidbody> ();
+		AirDropRB = transform.GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
@@ -33,18 +31,18 @@ public class BRS_AirDrop : MonoBehaviour
 
 		if (Landed)
 		{
-			DropHasLanded ();
+			DropHasLanded();
 			Landed = false;
 		}
 	}
 
 	void DropHasLanded()
 	{
-		DropLight.gameObject.SetActive (true);
-		Smoke.gameObject.SetActive (true);
+		DropLight.gameObject.SetActive(true);
+		Smoke.gameObject.SetActive(true);
 		AirDropRB.drag = 0;
 		AirDropRB.mass = 5000;
-		Destroy (GroundDetection);
-		Destroy (Canopy);
+		Destroy(GroundDetection);
+		Destroy(Canopy);
 	}
 }

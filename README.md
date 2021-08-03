@@ -14,7 +14,9 @@ https://www.youtube.com/watch?v=uQlDfDsWiMs&list=PLDSN4X0GGaNJuuSFS5EH9rEmiC_ZC5
 ---
 # changelog below (from bottom to top) : 
 ---
-- version : 0.4 (currently in repository)
+- version : 0.5 (currently in repository)
+---
+- part 5 finished and updated, see commit notes for specifics.
 ---
 - particle effects for part 5 added.
 https://assetstore.unity.com/packages/essentials/asset-packs/unity-particle-pack-5-x-73777
