@@ -59,7 +59,6 @@ public class BRS_PlaneDropManager : MonoBehaviour
 		private void SetupFlightPath()
 		{
 			// Let's find a path that is certainly THROUGH the cylinder
-			Debug.Log("Start");
 			VerifiedPath = false;
 			int numberOfAttempts = 0;
 			Vector3 startFlight;
@@ -67,7 +66,7 @@ public class BRS_PlaneDropManager : MonoBehaviour
 
 			do
 			{
-				Debug.Log("Planing optimal Route");
+				//Debug.Log("Planing optimal Route");
 				//Pick a Random startpoint
 				startFlightIndex = Random.Range(0, PD_L.Length);
 				startFlight = PD_L [startFlightIndex];
@@ -84,7 +83,7 @@ public class BRS_PlaneDropManager : MonoBehaviour
 				if (Physics.Raycast(PlaneStart.transform.position, PlaneStart.transform.forward, out objectHit, 18000))
 				{
 
-					Debug.Log("Trying " + numberOfAttempts++ + " times");
+					//Debug.Log("Trying " + numberOfAttempts++ + " times");
 					if (objectHit.collider.gameObject.name == "AcceptableDropZone")
 					{
 						VerifiedPath = true;
