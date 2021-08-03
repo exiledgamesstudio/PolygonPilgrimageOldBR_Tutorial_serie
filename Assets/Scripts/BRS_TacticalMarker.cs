@@ -17,7 +17,7 @@ public class BRS_TacticalMarker : MonoBehaviour
 	void Start ()
 	{
 		FPCamera = GetComponentInChildren<Camera>();
-		MinimapCamHeight = GameObject.Find ("MiniMap Camera").transform.position.y;
+		MinimapCamHeight = GameObject.Find ("MiniMap_Camera").transform.position.y;
 		markerOffset = MinimapCamHeight - 10.0f;
 	}
 
@@ -33,11 +33,13 @@ public class BRS_TacticalMarker : MonoBehaviour
 	private void PlaceMarker()
 	{
 		ray = new Ray(FPCamera.transform.position, FPCamera.transform.forward);
+		Debug.Log("cam + ray : " + FPCamera.transform.position + " " + FPCamera.transform.forward);
 		// Are we pointing at something in the world?
 		if (Physics.Raycast(ray, out hit))
 		{
 			Vector3 markerLocation = new Vector3(hit.point.x, markerOffset, hit.point.z);
-			if (MARKER_ID == "*NONE*") // no marker on the map
+			// no marker on the map
+			if (MARKER_ID == "*NONE*")
 			{
 				GameObject marker = Instantiate(TacticalMarker, markerLocation, Quaternion.identity, null );
 				MARKER_ID = marker.name;  //remember this for the next time
