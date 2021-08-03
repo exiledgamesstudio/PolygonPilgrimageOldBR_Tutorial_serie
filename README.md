@@ -14,7 +14,9 @@ https://www.youtube.com/watch?v=uQlDfDsWiMs&list=PLDSN4X0GGaNJuuSFS5EH9rEmiC_ZC5
 ---
 # changelog below (from bottom to top) : 
 ---
-- version : 0.5 (currently in repository)
+- version : 0.6 (currently in repository)
+---
+- part 6 (tactical marker) added + cursor.
 ---
 - part 5 finished and updated, see commit notes for specifics.
 ---
