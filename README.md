@@ -14,7 +14,9 @@ https://www.youtube.com/watch?v=uQlDfDsWiMs&list=PLDSN4X0GGaNJuuSFS5EH9rEmiC_ZC5
 ---
 # changelog below (from bottom to top) : 
 ---
-- version : 0.6 (currently in repository)
+- version : 0.7 (currently in repository)
+---
+- part 7 zone shrinking change, see last part 7 commit for changes.
 ---
 - part 6 (tactical marker) added + cursor.
 ---

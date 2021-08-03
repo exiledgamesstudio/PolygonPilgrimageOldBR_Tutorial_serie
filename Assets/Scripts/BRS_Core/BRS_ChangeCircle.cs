@@ -7,16 +7,25 @@ public class BRS_ChangeCircle : MonoBehaviour
 {
 	[Range(0, 360)]
 	public int Segments;
+	
 	[Range(0,5000)]
 	public float XRadius;
+
+	//THIS IS NOT USED - SHOULD BE ELIMINATED
+	/*
 	[Range(0,5000)]
-	public float YRadius;  //THIS IS NOT USED - SHOULD BE ELIMINATED
+	public float YRadius;
+	*/
 
+	[Range(1, 20)]
+	public int WallMaxHeight;
+
+	//default to 50%
 	[Range(10, 100)]
-  public int ZoneRadiusFactor = 50; //default to 50%
-
+	public int ZoneRadiusFactor = 50;
+	
 	[Header("Shrinking Zones")]
-  public List<int> ZoneTimes;
+	public List<int> ZoneTimes;
 
 	#region Private Members
 	private bool Shrinking;  // this can be set to PUBLIC in order to troubleshoot.  It will show a checkbox in the Inspector
@@ -39,47 +48,50 @@ public class BRS_ChangeCircle : MonoBehaviour
 	void Start ()
 	{
 		renderer = gameObject.GetComponent<LineRenderer>();
-		radii[0] = XRadius;  radii[1] = YRadius;
-		circle = new WorldCircle(ref renderer, Segments, radii);
+		//radii[0] = XRadius;  radii[1] = YRadius;
+		circle = new WorldCircle(ref renderer, Segments, XRadius, XRadius);
 		ZoneWall = GameObject.FindGameObjectWithTag ("ZoneWall");
-
+		
 		timePassed = Time.deltaTime;
 	}
 
 
 	void Update ()
 	{
-		ZoneWall.transform.localScale = new Vector3 ((XRadius * 0.01f), 1, (XRadius * 0.01f));
-
+		ZoneWall.transform.localScale = new Vector3 ((XRadius * 0.01f), WallMaxHeight, (XRadius * 0.01f));
+		
 		if(Shrinking)
 		{
 			// we need a new center point (that is within the bounds of the current zone)
 			if (!newCenterObtained)
 			{
-			  centerPoint = NewCenterPoint(transform.position, XRadius, shrinkRadius);
+				centerPoint = NewCenterPoint(transform.position, XRadius, shrinkRadius);
 				distanceToMoveCenter = Vector3.Distance(transform.position, centerPoint); //this is used in the Lerp (below)
 				newCenterObtained = (centerPoint != new Vector3(0, -100, 0));
-		  }
-
-Debug.Log("New Center Point is " + centerPoint);
-
+			}
+			
+			Debug.Log("New Center Point is " + centerPoint);
+			
 			// move the center point, over time
 			transform.position = Vector3.Lerp(transform.position, centerPoint, (distanceToMoveCenter / timeToShrink) * Time.deltaTime );
+			
 			// shrink the zone diameter, over time
 			XRadius = Mathf.MoveTowards(XRadius, shrinkRadius, (shrinkRadius / timeToShrink) * Time.deltaTime);
 			circle.Draw(Segments, XRadius, XRadius);
-
+			
 			// MoveTowards will continue infinitum, so we must test that we have gotten close enough to be DONE
 			if (1 > (XRadius - shrinkRadius))
 			{
-			  timePassed = Time.deltaTime;
+				timePassed = Time.deltaTime;
 				Shrinking = false;
 				newCenterObtained = false;
 			}
-		} else {
+		}
+		else
+		{
 			timePassed += Time.deltaTime; // increment clock time
 		}
-
+		
 		// have we passed the next threshold for time delay?
 		if (((int) timePassed)  > ZoneTimes[zoneTimesIndex])
 		{
@@ -90,11 +102,14 @@ Debug.Log("New Center Point is " + centerPoint);
 		}
 
 		// COUNT DOWN
-		if (timePassed > (ZoneTimes[zoneTimesIndex] - countdownPrecall)) {  // we need to begin counting down
+		// we need to begin counting down
+		if (timePassed > (ZoneTimes[zoneTimesIndex] - countdownPrecall))
+		{
 			if (ZoneTimes[zoneTimesIndex] - (int) timePassed != count)
 			{
-				count = Mathf.Clamp(ZoneTimes[zoneTimesIndex] - (int) timePassed, 1, 1000);  // this ensures our value never falls below zero
-
+				// this ensures our value never falls below zero
+				count = Mathf.Clamp(ZoneTimes[zoneTimesIndex] - (int) timePassed, 1, 1000);
+				
 				//FILL IN APPROPRIATE UI CALLS HERE FOR THE COUNTDOWN
 				Debug.Log("Shrinking in " + count + " seconds.");
 			}
