@@ -25,7 +25,6 @@ public class Compass : MonoBehaviour
 		int displayangle;
 		displayangle = Mathf.RoundToInt(headingAngle);
 
-		Debug.Log("angle is " + headingAngle);
 		//Set the text of Compass Degree Text to the clamped value, but change it to the letter if it is a True direction
 		switch (displayangle)
 		{

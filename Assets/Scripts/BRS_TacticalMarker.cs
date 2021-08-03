@@ -24,10 +24,10 @@ public class BRS_TacticalMarker : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-			if (Input.GetKeyUp (KeyCode.T))
-			{
-				PlaceMarker();
-			}
+		if (Input.GetKeyUp (KeyCode.T))
+		{
+			PlaceMarker();
+		}
 	}
 
 	private void PlaceMarker()
@@ -42,7 +42,10 @@ public class BRS_TacticalMarker : MonoBehaviour
 				GameObject marker = Instantiate(TacticalMarker, markerLocation, Quaternion.identity, null );
 				MARKER_ID = marker.name;  //remember this for the next time
 
-			} else { //find the marker that exists and relocate it
+			}
+			else
+			{
+				//find the marker that exists and relocate it
 				GameObject marker = GameObject.Find(MARKER_ID);
 				Destroy (marker);
 				marker = Instantiate(TacticalMarker, markerLocation, Quaternion.identity, null );
