@@ -10,7 +10,7 @@ Original serie on Polygon Pilgrimage channel :
 https://www.youtube.com/watch?v=uQlDfDsWiMs&list=PLDSN4X0GGaNJuuSFS5EH9rEmiC_ZC5Utc
 
 ---
-# Made with Unity 2019.4.28f1 (LTS in july 2021)
+# Made with Unity 2019.4.29f1 (LTS in july 2021)
 ---
 # changelog below (from bottom to top) : 
 ---
