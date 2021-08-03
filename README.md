@@ -14,7 +14,9 @@ https://www.youtube.com/watch?v=uQlDfDsWiMs&list=PLDSN4X0GGaNJuuSFS5EH9rEmiC_ZC5
 ---
 # changelog below (from bottom to top) : 
 ---
-- version : 0.7 (currently in repository)
+- version : 0.8 (currently in repository)
+---
+- part 8 added, altough it is missing post process as of now. Fixed a bit the UI by putting the compass on top of the screen.
 ---
 - part 7 zone shrinking change, see last part 7 commit for changes.
 ---

@@ -13,6 +13,7 @@ public class BRS_ZoneDamage : MonoBehaviour
 	private string playername;
 	/*
 	[Header("---Post Processing Objects---")]
+	// volumes ?? have to investigate further.
 	public PostProcessingProfile outsideZonePPP;
 	public PostProcessingProfile standardPPP;
 	private PostProcessingBehaviour CamPPB;
