@@ -1,0 +1,195 @@
+FN_PickUp Item
+--------------
+Empty GameObject
+(0,0,0)
+FN_Item Manager (Script)
+(settings)
+Box Collider
+Is Trigger
+Center 0, 0.25, 0
+Size 3, 0.5, 3
+
+
+	UI Offset (Base)
+	----------------
+	Empty GameObject
+	(0,0,0)
+	LookAtCamera (Script)
+
+
+		WUI Offset
+		----------
+		Empty GameObject
+		(-1.25, 0.65, 0)
+
+
+			FN_Item Pickup (WUI)
+			--------------------
+			Canvas
+			(0,0,0)
+			Pivot 0.5 , 0.5
+			W 1.25
+			H 0.25
+			World Space
+
+				Content_Left
+				------------
+				Empty GameObject
+				0,0,0
+				W 1.25
+				H 0.25
+				Pivot 0.5, 0.5
+
+					Left Background Image
+					---------------------
+					Raw Image
+					0,0,0
+					W 1.25
+					H 0.25
+					Texture: FN_Pickup_Key_Frame
+					Color: White
+
+						_PickUpBtnText
+						--------------
+						TextMeshPro text
+						PosX -0.505
+						PozY 0.0535
+						W .125
+						H .125
+						Scale 0.095 all
+						Text: F (whatever you want)
+						Font Asset: Anton SDF
+						Color: White
+						Font Size 1
+						Alignment: Center, Center
+
+						_txtPickUp
+						----------
+						TextMeshPro text
+						PosX -0.505
+						PozY -0.0285
+						W 3.5
+						H 0.25
+						Scale 0.065 all
+						Text: Pick Up
+						Font Asset: Anton SDF
+						Bold
+						Color: White
+						Font Size 1
+						Alignment: Center, Center
+
+
+				Content_Right
+				------------
+				Empty GameObject
+				0,0,0
+				W 1.25
+				H 0.25
+				Pivot 0.5, 0.5
+
+					Right Background Image
+					---------------------
+					Raw Image
+					0,0,0
+					W 1.25
+					H 0.25
+					Texture: FN_Pickup_ToolTip_Background_Fade
+					Color: White
+
+						_txtType
+						----------
+						TextMeshPro text
+						PosX 0.075
+						PozY 0.055
+						W 5
+						H 2.5
+						Scale 0.05 all
+						Text: (anything you want)
+						Font Asset: Anton SDF
+						Color: White
+						Font Size 1
+						Alignment: Left, Center
+
+						_txtItemName
+						----------
+						TextMeshPro text
+						PosX 0.15
+						PozY -0.045
+						W 20
+						H 2.5
+						Scale 0.05 all
+						Text: (anything you want)
+						Font Asset: Anton SDF
+						Bold
+						Color: White
+						Font Size 2
+						Alignment: Left, Center
+
+						_txtRarity
+						----------
+						TextMeshPro text
+						PosX -0.25
+						PozY 0.055
+						W 5
+						H 2.5
+						Scale 0.05 all
+						Text: (controlled by script, default is Common)
+						Font Asset: Anton SDF
+						Color: White
+						Font Size 1
+						Alignment: Center, Center
+
+						_txtSpacer
+						----------
+						TextMeshPro text
+						PosX -0.105
+						PozY 0.055
+						W 5
+						H 2.5
+						Scale 0.05, 0.075, 0.05
+						Text: |
+						Font Asset: Anton SDF
+						Bold
+						Color: White
+						Font Size 1
+						Alignment: Center, Center
+
+						_txtAmount
+						----------
+						TextMeshPro text
+						PosX 0.565
+						PozY 0.075
+						W 5
+						H 2.5
+						Scale 0.05 all
+						Text: (controlled by script, default 10)
+						Font Asset: Anton SDF
+						Color: White
+						Font Size 1
+						Alignment: Center, Center
+
+							_txtAmountX
+							----------
+							TextMeshPro text
+							PosX -1.1
+							PozY -0.1
+							W 5
+							H 2.5
+							Scale 0.7 all
+							Text: x
+							Font Asset: Anton SDF
+							Color: White
+							Font Size 1
+							Alignment: Center, Center
+
+	Item Holder (Model)
+	----------------
+	Empty GameObject
+	(0,0,0)
+
+		Item Model
+		----------
+		Whatever GameObject you want
+		(0, 0, 0)
+
+
