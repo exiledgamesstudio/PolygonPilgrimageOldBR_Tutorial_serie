@@ -29,11 +29,16 @@ public class BRS_ChangeCircle : MonoBehaviour
 
 	#region Private Members
 	private bool Shrinking;  // this can be set to PUBLIC in order to troubleshoot.  It will show a checkbox in the Inspector
+	[SerializeField]
 	private int countdownPrecall = 10;  //this MIGHT be public, but it should not need to be changed
 	private int timeToShrink = 30; //seconds
+	[SerializeField]
 	private int count = 0;
+	[SerializeField]
 	private bool newCenterObtained = false;
-	private Vector3 centerPoint = new Vector3(0, -100, 0);
+	[SerializeField] 
+	private Vector3 centerPoint = new Vector3(1200, -100, 1200);
+	[SerializeField]
 	private float distanceToMoveCenter;
 	private WorldCircle circle;
 	private LineRenderer renderer;
@@ -58,6 +63,7 @@ public class BRS_ChangeCircle : MonoBehaviour
 
 	void Update ()
 	{
+		Debug.Log("time passed " + Time.realtimeSinceStartup);
 		ZoneWall.transform.localScale = new Vector3 ((XRadius * 0.01f), WallMaxHeight, (XRadius * 0.01f));
 		
 		if(Shrinking)
@@ -65,6 +71,7 @@ public class BRS_ChangeCircle : MonoBehaviour
 			// we need a new center point (that is within the bounds of the current zone)
 			if (!newCenterObtained)
 			{
+				Debug.Log("current center " + centerPoint);
 				centerPoint = NewCenterPoint(transform.position, XRadius, shrinkRadius);
 				distanceToMoveCenter = Vector3.Distance(transform.position, centerPoint); //this is used in the Lerp (below)
 				newCenterObtained = (centerPoint != new Vector3(0, -100, 0));
@@ -119,9 +126,45 @@ public class BRS_ChangeCircle : MonoBehaviour
 	// ***********************************
 	// PRIVATE (helper) FUNCTIONS
 	// ***********************************
+	private Vector3 FeedPoint = Vector3.zero;
+	// want circles to follow a pattern in a direction
+	bool setchooser;
+	bool chosenset;
+	private Time timerun;
+	bool SetChooser()
+    {
+		if(!chosenset)
+        {
+			setchooser = System.Convert.ToBoolean(Random.Range(0, 1));
+			chosenset = true;
+		}
+		return setchooser;
+	}
+
 	private Vector3 NewCenterPoint(Vector3 currentCenter, float currentRadius, float newRadius)
 	{
-		Vector3 newPoint = Vector3.zero;
+		var offset = UnityEngine.Random.RandomRange(-120, 120);
+		Debug.Log("orientation chooser " + SetChooser());
+
+		Vector3 newPoint;
+		if(FeedPoint == Vector3.zero)
+        {
+			FeedPoint = new Vector3(1200, 0, 1200);
+		}
+
+		// get a positive offset
+		if (setchooser)
+        {
+			newPoint = new Vector3(FeedPoint.x + offset, 0, FeedPoint.z + offset);
+        }
+		else
+		{
+			newPoint = new Vector3(FeedPoint.x - offset, 0, FeedPoint.z - offset);
+		}
+
+		FeedPoint = newPoint;
+		//bool chooser = (bool)orientationchooser;
+		//Vector3 newPoint = Vector3.zero;
 
 		var totalCountDown = 30000; //prevent endless loop which will kill Unity
 		var foundSuitable = false;
@@ -130,7 +173,7 @@ public class BRS_ChangeCircle : MonoBehaviour
 			 totalCountDown--;
 			 Vector2 randPoint = Random.insideUnitCircle * (currentRadius * 2.0f);
 			 newPoint = new Vector3(randPoint.x, 0, randPoint.y);
-			 foundSuitable = (Vector3.Distance(currentCenter, newPoint) < currentRadius);
+			 foundSuitable = (Vector3.Distance(currentCenter, newPoint) < 400);
 			 if (totalCountDown < 1)
 			   return new Vector3(0, -100, 0);  //explicitly define an error has occured.  In this case we did not locate a reasonable point
 		}
@@ -142,7 +185,7 @@ public class BRS_ChangeCircle : MonoBehaviour
 		//if we have exceeded the count, just start over
 		if (zoneTimesIndex >= ZoneTimes.Count -1) // Lists are zero-indexed
 		  zoneTimesIndex = -1;  // the fall-through (below) will increment this
-
+		Debug.Log("zonetimes index " + (int)zoneTimesIndex);
 		// next time to wait
 		return ZoneTimes[++zoneTimesIndex];
 	}
